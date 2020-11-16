@@ -89,6 +89,14 @@ The `Update-RdmPackage` command downloads and updates the latest RDM package. It
 
 The `Uninstall-RdmPackage` command uninstalls RDM from the system.
 
+## Register-RdmLicense
+
+The `Register-RdmLicense` command registers a license with RDM using its [command-line interface](https://kb.devolutions.net/rdm_command_line_arguments.html).
+
+```PowerShell
+Register-RdmLicense -Serial 'XXXXX-XXXXX-XXXXX-XXXXX-XXXXX' -Name 'Bob'
+```
+
 ## Get-RdmPackage
 
 The `Get-RdmPackage` command finds the RDM package CDN download URL for a given platform, edition and version. It accepts the same parameters as `Install-RdmPackage`.
