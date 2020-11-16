@@ -77,7 +77,9 @@ function Get-RdmProcess
             $RdmProcess = $(Get-Process | Where-Object -Property ProcessName -Like 'remotedesktopmanager.free')
         }
 	} elseif ($IsMacOS) {
-        $RdmProcess = $(Get-Process | Where-Object -Property ProcessName -Like 'RemoteDesktopManager')
+        # Workaround for macOS limitation where process names are truncated to 15 characters
+        $TruncatedProcessName = 'RemoteDesktopManager'.Substring(0,14) + '*'
+        $RdmProcess = $(Get-Process | Where-Object -Property ProcessName -Like $TruncatedProcessName)
     } else { # IsWindows
         $RdmProcess = $(Get-Process | Where-Object -Property ProcessName -Like 'RemoteDesktopManager64')
 

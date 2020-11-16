@@ -81,6 +81,14 @@ The **-RequiredVersion** parameter forces a specific version number other than t
 
 The **-Quiet** parameter makes a silent installation. On Windows, this only works from an elevated PowerShell session, otherwise the UAC prompt will be used to elevate permissions. On Windows and Linux, the `sudo` command is called to elevate permissions for the installation when the current context is not elevated.
 
+## Update-RdmPackage
+
+The `Update-RdmPackage` command downloads and updates the latest RDM package. It is almost the same as `Install-RdmPackage` except it restarts RDM after the update if it was previously running.
+
+## Uninstall-RdmPackage
+
+The `Uninstall-RdmPackage` command uninstalls RDM from the system.
+
 ## Get-RdmPackage
 
 The `Get-RdmPackage` command finds the RDM package CDN download URL for a given platform, edition and version. It accepts the same parameters as `Install-RdmPackage`.
@@ -105,14 +113,6 @@ PS > Get-RdmPackage -Platform 'Linux' -Edition 'Enterprise' -RequiredVersion '20
 Url     : https://cdn.devolutions.net/download/Linux/RDM/2020.3.0.0/RemoteDesktopManager_2020.3.0.0_amd64.deb
 Version : 2020.3.0
 ```
-
-## Update-RdmPackage
-
-The `Update-RdmPackage` command downloads and updates the latest RDM package. It is almost the same as `Install-RdmPackage` except it restarts RDM after the update if it was previously running.
-
-## Uninstall-RdmPackage
-
-The `Uninstall-RdmPackage` command uninstalls RDM from the system.
 
 ## Get-RdmCommand
 
@@ -185,6 +185,24 @@ PS > Get-RdmVersion
 ## Get-RdmProcess
 
 The `Get-RdmProcess` command finds the RDM running process.
+
+### Examples
+
+```powershell
+PS > Get-RdmProcess
+
+Handles  NPM(K)    PM(K)      WS(K)     CPU(s)     Id  SI ProcessName
+-------  ------    -----      -----     ------     --  -- -----------
+    718      75   273240     332964      10.64  40560   7 RemoteDesktopManager64
+```
+
+```powershell
+PS > Get-RdmProcess
+
+ NPM(K)    PM(M)      WS(M)     CPU(s)      Id  SI ProcessName
+ ------    -----      -----     ------      --  -- -----------
+      0     0.00     721.77      15.36   56681 …65 RemoteDesktopMa
+```
 
 ## Start-RdmProcess
 
